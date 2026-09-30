@@ -1,0 +1,41 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace = 'com.hook.picturethis.vip'
+    compileSdk = 37
+
+    signingConfigs {
+        create("universal") {
+            keyAlias = "androiddebugkey"
+            keyPassword = "android"
+            storeFile = file("../debug.keystore")
+            storePassword = "android"
+        }
+    }
+    defaultConfig {
+        applicationId = "com.hook.picturethis.vip"
+        minSdk = 26
+        targetSdk = 36
+        versionName = "1.1.0"
+        versionCode = 4
+    }
+    buildTypes {
+        all { signingConfig = signingConfigs.getByName("universal") }
+        debug { debuggable = true }
+        release { minifyEnabled = false; debuggable = false }
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+    buildFeatures { buildConfig true }
+    lint { checkReleaseBuilds = false }
+}
+
+dependencies {
+    compileOnly(files("libs/libxposed/api.jar"))
+    implementation(files("libs/libxposed/interface.jar"))
+    implementation(files("libs/libxposed/service.jar"))
+}

@@ -1,0 +1,5 @@
+# token 密钥（绝不进仓库）
+dev-project/tokens
+
+# 开发记录/日志箱（本地沉淀, md 唯一原件在知识库; 不进公开仓库 2026-09-09）
+dev-project/
